@@ -33,6 +33,7 @@ const languages = [
   { value: "java", label: "Java" },
   { value: "csharp", label: "C#" },
   { value: "cpp", label: "C++" },
+  { value: "c", label: "C" },
 ];
 
 export default function Home() {
