@@ -59,12 +59,21 @@ export const metadata = {
     siteName: "Array Ipsum",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://array-ipsum.vercel.app/logo.png",
+        width: 1200,
+        height: 630,
+        alt: "Array Ipsum - Free Online Array Generator",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Array Ipsum - Free Online Array Generator",
     description: "Generate placeholder arrays instantly. Create random integer, float, string, and boolean arrays with code snippets for multiple languages.",
     creator: "@arrayipsum",
+    images: ["https://array-ipsum.vercel.app/logo.png"],
   },
   alternates: {
     canonical: "https://array-ipsum.vercel.app/",
