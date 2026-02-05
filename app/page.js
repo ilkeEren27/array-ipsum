@@ -93,7 +93,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex flex-col items-center justify-center p-4 sm:p-8">
+    <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex flex-col items-center p-4 sm:p-8">
       {/* Decorative elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
@@ -231,8 +231,17 @@ export default function Home() {
       </Card>
 
       {/* Footer */}
-      <footer className="mt-8 text-center text-sm text-muted-foreground relative z-10">
-        <p>Made with ♥ for developers everywhere</p>
+      <footer className="w-full py-8 flex items-center justify-center mt-auto bg-card/50 backdrop-blur-sm relative z-10">
+        <p className="text-center text-muted-foreground">
+          Made by{" "}
+          <a 
+            className="underline text-primary hover:text-primary/80 transition-colors duration-200 font-medium" 
+            href="https://ilkeeren.dev"
+          >
+            Eren
+          </a>{" "}
+          with <span className="text-primary">❤️</span>
+        </p>
       </footer>
     </main>
   );

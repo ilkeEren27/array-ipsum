@@ -56,7 +56,7 @@
 - [Next.js 16](https://nextjs.org/) - React framework
 - [React 19](https://react.dev/) - UI library
 - [Tailwind CSS 4](https://tailwindcss.com/) - Styling
-- [Radix UI](https://www.radix-ui.com/) - Accessible components
+- [shadcn/ui](https://ui.shadcn.com/) - Accessible components
 - [Lucide Icons](https://lucide.dev/) - Beautiful icons
 - [next-themes](https://github.com/pacocoursey/next-themes) - Theme management
 
@@ -77,4 +77,4 @@ MIT License - feel free to use this project however you like.
 
 ---
 
-Made with ♥ for developers everywhere
+Made with ❤️ by [Eren](https://ilkeeren.dev)
