@@ -94,11 +94,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex flex-col items-center justify-center p-4 sm:p-8">
-      {/* Decorative elements */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 -left-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 -right-32 w-64 h-64 bg-primary/5 rounded-full blur-3xl" />
-      </div>
+
 
       {/* Theme Toggle - absolute positioned */}
       <div className="fixed top-4 right-4 z-20">
@@ -231,7 +227,7 @@ export default function Home() {
       </Card>
 
       {/* Footer */}
-      <footer className="w-full py-8 flex items-center justify-center bg-card/50 backdrop-blur-sm relative z-10">
+      <footer className="w-full py-8 flex items-center justify-center relative z-10">
         <p className="text-center text-muted-foreground">
           Made by{" "}
           <a 
