@@ -72,7 +72,7 @@ export const metadata = {
   category: "Developer Tools",
   applicationName: "Array Ipsum",
   other: {
-    "google-site-verification": "Usgxt7BcTXxmsQiDK0eRpqMwnO6dvCZH",
+    "google-site-verification": "Usgxt7BcTXxmsQiDK0eRpqMwnO6dvCZH-lW_GPFmp2A",
   },
 };
 
