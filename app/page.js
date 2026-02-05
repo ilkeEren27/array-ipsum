@@ -113,6 +113,14 @@ export default function Home() {
         <p className="text-muted-foreground text-lg">
           Generate placeholder arrays for your code in seconds
         </p>
+        <a 
+          href="https://marketplace.visualstudio.com/items?itemName=ilkeEren.array-ipsum"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-block mt-3 text-sm text-primary hover:text-primary/80 hover:underline transition-colors duration-200"
+        >
+          Also available in VSCode as an extension!
+        </a>
       </div>
 
       {/* Main Card */}

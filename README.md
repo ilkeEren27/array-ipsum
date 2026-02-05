@@ -4,6 +4,8 @@
 
 **Array Ipsum** is a sleek, developer-focused tool that generates random placeholder arrays with support for multiple data types and programming languages. Perfect for testing, prototyping, or when you just need some quick dummy data.
 
+**Also available as a [VS Code extension](https://marketplace.visualstudio.com/items?itemName=ilkeEren.array-ipsum)!**
+
 ## Features
 
 - **Multiple Data Types** - Generate arrays of:
