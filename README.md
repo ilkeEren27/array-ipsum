@@ -19,6 +19,7 @@
   - JavaScript
   - Python
   - Java
+  - C
   - C#
   - C++
 
