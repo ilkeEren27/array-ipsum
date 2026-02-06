@@ -38,7 +38,7 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/array-ipsum.git
+   git clone https://github.com/ilkeEren27/array-ipsum.git
    cd array-ipsum
    ```
 
