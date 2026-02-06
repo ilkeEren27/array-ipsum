@@ -3,37 +3,80 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { 
-  generateInts, 
-  generateFloats, 
-  generateDoubles, 
-  generateStrings, 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  generateInts,
+  generateFloats,
+  generateDoubles,
+  generateStrings,
   generateBools,
   formatOutput,
-  generateCodeSnippet 
+  generateCodeSnippet,
 } from "@/lib/generators";
-import { Copy, Check, Sparkles, Code2, Brackets, Hash, CircleDot, Binary, Type, ToggleLeft } from "lucide-react";
+import {
+  Copy,
+  Check,
+  Sparkles,
+  Code2,
+  Brackets,
+  Hash,
+  CircleDot,
+  Binary,
+  Type,
+  ToggleLeft,
+} from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 const dataTypes = [
   { value: "int", label: "Integer", icon: Hash, description: "Whole numbers" },
-  { value: "float", label: "Float", icon: CircleDot, description: "2 decimal places" },
-  { value: "double", label: "Double", icon: Binary, description: "6 decimal places" },
-  { value: "string", label: "String", icon: Type, description: "Lorem ipsum words" },
-  { value: "bool", label: "Boolean", icon: ToggleLeft, description: "true/false" },
+  {
+    value: "float",
+    label: "Float",
+    icon: CircleDot,
+    description: "2 decimal places",
+  },
+  {
+    value: "double",
+    label: "Double",
+    icon: Binary,
+    description: "6 decimal places",
+  },
+  {
+    value: "string",
+    label: "String",
+    icon: Type,
+    description: "Lorem ipsum words",
+  },
+  {
+    value: "bool",
+    label: "Boolean",
+    icon: ToggleLeft,
+    description: "true/false",
+  },
 ];
 
 const languages = [
   { value: "javascript", label: "JavaScript" },
   { value: "python", label: "Python" },
   { value: "java", label: "Java" },
+  { value: "c", label: "C" },
   { value: "csharp", label: "C#" },
   { value: "cpp", label: "C++" },
-  { value: "c", label: "C" },
 ];
 
 export default function Home() {
@@ -77,10 +120,10 @@ export default function Home() {
   };
 
   const handleCopy = async () => {
-    const textToCopy = codeView 
+    const textToCopy = codeView
       ? generateCodeSnippet(generatedArray, selectedType, language)
       : formatOutput(generatedArray, selectedType);
-    
+
     await navigator.clipboard.writeText(textToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -88,15 +131,13 @@ export default function Home() {
 
   const getOutput = () => {
     if (!generatedArray) return null;
-    return codeView 
+    return codeView
       ? generateCodeSnippet(generatedArray, selectedType, language)
       : formatOutput(generatedArray, selectedType);
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-background via-background to-muted/30 flex flex-col items-center justify-center p-4 sm:p-8">
-
-
+    <main className="min-h-screen bg-linear-to-br from-background via-background to-muted/30 flex flex-col items-center justify-center p-4 sm:p-8">
       {/* Theme Toggle - absolute positioned */}
       <div className="fixed top-4 right-4 z-20">
         <ThemeToggle />
@@ -113,7 +154,7 @@ export default function Home() {
         <p className="text-muted-foreground text-lg">
           Generate placeholder arrays for your code in seconds
         </p>
-        <a 
+        <a
           href="https://marketplace.visualstudio.com/items?itemName=ilkeEren.array-ipsum"
           target="_blank"
           rel="noopener noreferrer"
@@ -139,8 +180,14 @@ export default function Home() {
         <CardContent className="space-y-6">
           {/* Data Type Selector */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground">Data Type</label>
-            <Tabs value={selectedType} onValueChange={handleTypeChange} className="w-full">
+            <label className="text-sm font-medium text-muted-foreground">
+              Data Type
+            </label>
+            <Tabs
+              value={selectedType}
+              onValueChange={handleTypeChange}
+              className="w-full"
+            >
               <TabsList className="w-full grid grid-cols-5 h-auto">
                 {dataTypes.map((type) => (
                   <TabsTrigger
@@ -154,25 +201,31 @@ export default function Home() {
                 ))}
               </TabsList>
             </Tabs>
-            <p className="text-sm font-medium text-foreground/70 text-center mt-3 min-h-[1.5rem]">
-              {dataTypes.find(t => t.value === selectedType)?.description}
+            <p className="text-sm font-medium text-foreground/70 text-center mt-3 min-h-6">
+              {dataTypes.find((t) => t.value === selectedType)?.description}
             </p>
           </div>
 
           {/* Count Input */}
           <div className="space-y-2">
-            <label className="text-sm font-medium text-muted-foreground">Number of Elements</label>
+            <label className="text-sm font-medium text-muted-foreground">
+              Number of Elements
+            </label>
             <div className="flex gap-2">
               <Input
                 type="number"
                 min={1}
                 max={1000}
                 value={count}
-                onChange={(e) => setCount(Math.min(1000, Math.max(1, parseInt(e.target.value) || 1)))}
+                onChange={(e) =>
+                  setCount(
+                    Math.min(1000, Math.max(1, parseInt(e.target.value) || 1)),
+                  )
+                }
                 className="flex-1 font-mono"
                 placeholder="Enter count (1-1000)"
               />
-              <Button 
+              <Button
                 onClick={handleGenerate}
                 className="gap-2 px-6 cursor-pointer"
                 size="lg"
@@ -187,7 +240,9 @@ export default function Home() {
           {generatedArray && (
             <div className="space-y-3 animate-in fade-in slide-in-from-bottom-2 duration-300">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-medium text-muted-foreground">Output</label>
+                <label className="text-sm font-medium text-muted-foreground">
+                  Output
+                </label>
                 <div className="flex items-center gap-2">
                   <Button
                     variant={codeView ? "default" : "outline"}
@@ -205,7 +260,11 @@ export default function Home() {
                       </SelectTrigger>
                       <SelectContent>
                         {languages.map((lang) => (
-                          <SelectItem key={lang.value} value={lang.value} className="text-xs">
+                          <SelectItem
+                            key={lang.value}
+                            value={lang.value}
+                            className="text-xs"
+                          >
                             {lang.label}
                           </SelectItem>
                         ))}
@@ -224,7 +283,11 @@ export default function Home() {
                   onClick={handleCopy}
                   className="absolute top-2 right-2 h-8 w-8 cursor-pointer"
                 >
-                  {copied ? <Check className="w-4 h-4 text-green-500" /> : <Copy className="w-4 h-4" />}
+                  {copied ? (
+                    <Check className="w-4 h-4 text-green-500" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
                 </Button>
               </div>
               <p className="text-xs text-muted-foreground text-center">
@@ -239,8 +302,8 @@ export default function Home() {
       <footer className="w-full py-8 flex items-center justify-center relative z-10">
         <p className="text-center text-muted-foreground">
           Made by{" "}
-          <a 
-            className="underline text-primary hover:text-primary/80 transition-colors duration-200 font-medium" 
+          <a
+            className="underline text-primary hover:text-primary/80 transition-colors duration-200 font-medium"
             href="https://ilkeeren.dev"
           >
             Eren
