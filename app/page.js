@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -39,6 +40,7 @@ import {
   Binary,
   Type,
   ToggleLeft,
+  Minus,
 } from "lucide-react";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -86,6 +88,9 @@ export default function Home() {
   const [copied, setCopied] = useState(false);
   const [codeView, setCodeView] = useState(false);
   const [language, setLanguage] = useState("javascript");
+  const [allowNegatives, setAllowNegatives] = useState(true);
+
+  const isNumericType = ["int", "float", "double"].includes(selectedType);
 
   // Clear output when data type changes
   const handleTypeChange = (newType) => {
@@ -96,15 +101,16 @@ export default function Home() {
 
   const handleGenerate = () => {
     let result;
+    const min = allowNegatives ? -1000 : 0;
     switch (selectedType) {
       case "int":
-        result = generateInts(count);
+        result = generateInts(count, min);
         break;
       case "float":
-        result = generateFloats(count);
+        result = generateFloats(count, min);
         break;
       case "double":
-        result = generateDoubles(count);
+        result = generateDoubles(count, min);
         break;
       case "string":
         result = generateStrings(count);
@@ -113,7 +119,7 @@ export default function Home() {
         result = generateBools(count);
         break;
       default:
-        result = generateInts(count);
+        result = generateInts(count, min);
     }
     setGeneratedArray(result);
     setCopied(false);
@@ -235,6 +241,23 @@ export default function Home() {
               </Button>
             </div>
           </div>
+
+          {/* Allow Negatives Toggle */}
+          {isNumericType && (
+            <div className="flex items-center justify-between rounded-lg border border-border/50 px-4 py-3 animate-in fade-in slide-in-from-top-1 duration-200">
+              <div className="flex items-center gap-2">
+                <Minus className="w-4 h-4 text-muted-foreground" />
+                <label htmlFor="allow-negatives" className="text-sm font-medium text-muted-foreground cursor-pointer">
+                  Allow negative values
+                </label>
+              </div>
+              <Switch
+                id="allow-negatives"
+                checked={allowNegatives}
+                onCheckedChange={setAllowNegatives}
+              />
+            </div>
+          )}
 
           {/* Output Section */}
           {generatedArray && (
